@@ -1,0 +1,9 @@
+.warning {
+    color: transparent;
+}
+
+.warning:hover{
+    color: red;
+    background-color: green;
+    font-weight: 400;
+}

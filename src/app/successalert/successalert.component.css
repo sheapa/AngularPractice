@@ -1,0 +1,9 @@
+.success {
+    color: transparent;
+}
+
+.success:hover{
+    color: green;
+    background-color: red;
+    font-weight: 800;
+}

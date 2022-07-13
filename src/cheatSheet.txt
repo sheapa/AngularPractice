@@ -1,0 +1,8 @@
+
+ng new my-first-app --no-strict
+
+npm install --save bootstrap@3
+
+ng serve --port 5000
+
+ng generate component 

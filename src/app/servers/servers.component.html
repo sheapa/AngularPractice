@@ -1,9 +1,24 @@
 <label> Server Name</label>
-<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button> -->
+<input type="text" class="form-control" [(ngModel)]="serverName"> <!--directive -->
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 <p [innerText]="allowNewServer">{{allowNewServer}}</p>
-<!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ serverCreationStatus }}</p>
 <p>{{serverName}}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer"> Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer> 
+    <p>
+        No server was created.
+    </p>
+</ng-template>
+<app-server *ngFor="let server of servers"></app-server>
+<input type="text" class="form-control" [(ngModel)]="userName">
+<p>{{userName}}</p>
+<button class="btn btn-primary" [disabled]="userName == ''" (click)="userName = ''">Reset User</button>
+<!-- <button class="btn btn-primary" (click)="displaySecret = !displaySecret">Display Details</button> -->
+<button class="btn btn-primary" (click)="onToggleDisplay()">Display Details</button>
+<p *ngIf="displaySecret">Secret Password = tuna</p>
+<div [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : transparent}" [ngClass]="{'white-text': i >= 4}" *ngFor="let logItem of log; let i = index">{{ logItem }}</div>
+<!--Directives: Instructions in the DOM, Usually uses Attribute Selector-->
